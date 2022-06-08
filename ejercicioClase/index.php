@@ -18,28 +18,27 @@
             <center>Bienvenidos al CRUD del Ejercicio de Clase</center>
         </h2>
     </div>
+
     <h5 class="my-5">
         <center>A continuación seleccione la entidad que desea gestionar</center>
     </h5>
+    
     <div class="container my-5">
         <div class="row">
-            <div class="col-auto">
+            <div class="col-auto me-5">
                 <a href="municipio/gestionMunicipios.php"><button class="btn btn-warning">Gestión Municipios</button></a>
             </div>
-            <div class="col-auto">
-                <button class="btn btn-warning">Gestión Personas</button>
+            <div class="col-auto me-5">
+                <a href="persona/gestionPersona.php"><button class="btn btn-warning">Gestión Personas</button></a>
             </div>
-            <div class="col-auto">
+            <div class="col-auto me-5">
                 <button class="btn btn-warning">Gestión Viviendas</button>
             </div>
-            <div class="col-auto">
+            <div class="col-auto me-5">
                 <button class="btn btn-warning">Gestión Posesiones</button>
             </div>
-            <div class="col-auto">
+            <div class="col-auto me-5">
                 <button class="btn btn-warning">Gestión Familias</button>
-            </div>
-            <div class="col-auto">
-                <button class="btn btn-warning">Gestión Cabezas de Familia</button>
             </div>
         </div>
     </div>
