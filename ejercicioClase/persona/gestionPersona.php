@@ -1,3 +1,6 @@
+<?php
+require "../database.php";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -26,22 +29,26 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container p-0">
         <div class="row">
 
             <!-- Formulario de Registro -->
-            <div class="col-4">
+            <div class="col-3">
                 <h3 class="mb-3">Ingrese datos:</h3>
                 <form id="formCreate" method="POST">
+
                     <div class="input-group my-2">
                         <input id="nombrePersona" name="nombrePersona" class="form-control" type="text" placeholder="Ingrese los Nombres de la Persona">
                     </div>
+
                     <div class="input-group my-2">
                         <input id="apellidoPersona" name="apellidoPersona" class="form-control" type="text" placeholder="Ingrese los Apellidos de la Persona">
                     </div>
+
                     <div class="input-group my-2">
                         <input id="telefonoPersona" name="telefonoPersona" class="form-control" type="tel" placeholder="Ingrese Número de Contacto">
                     </div>
+
                     <div class="input-group my-2">
                         <input id="edadPersona" name="edadPersona" class="form-control me-1" type="number" placeholder="Ingrese edad">
                         <select id="sexoPersona" name="sexoPersona" class="form-select">
@@ -53,9 +60,29 @@
 
                     <div class="input-group my-2">
                         <select id="municipioPersona" name="municipioPersona" class="form-select">
-                            <option disabled selected>Seleccione su municipio</option>
-                            <option value="1">...</option>
-                            <option value="2">...</option>
+                            <?php
+                            //Consulta Select Municipios
+                            $query = "SELECT * FROM municipio";
+                            $result = $conn->query($query);
+                            $numfilas = $result->num_rows;
+                            if ($numfilas > 0) {
+                            ?>
+                                <option disabled selected>Seleccione el Municipio</option>
+                                <?php
+                                for ($i = 0; $i < $numfilas; $i++) {
+                                    $aux = $result->fetch_object();
+                                ?>
+                                    <option value="<?php echo $aux->idMunicipio; ?>"><?php echo $aux->nombreMunicipio; ?></option>
+                                <?php
+                                }
+                                ?>
+                            <?php
+                            } else {
+                            ?>
+                                <option disabled selected>No hay Municipios Registrados...</option>
+                            <?php
+                            }
+                            ?>
                         </select>
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -63,11 +90,32 @@
                             </svg>
                         </button>
                     </div>
+
                     <div class="input-group my-2">
                         <select id="viviendaPersona" name="viviendaPersona" class="form-select">
-                            <option disabled selected>Seleccione su vivienda</option>
-                            <option value="1">...</option>
-                            <option value="2">...</option>
+                            <?php
+                            //Consulta Select Viviendas
+                            $query = "SELECT * FROM vivienda";
+                            $result = $conn->query($query);
+                            $numfilas = $result->num_rows;
+                            if ($numfilas > 0) {
+                            ?>
+                                <option disabled selected>Seleccione el Municipio</option>
+                                <?php
+                                for ($i = 0; $i < $numfilas; $i++) {
+                                    $aux = $result->fetch_object();
+                                ?>
+                                    <option value="<?php echo $aux->idVivienda; ?>"><?php echo $aux->direccionVivienda; ?></option>
+                                <?php
+                                }
+                                ?>
+                            <?php
+                            } else {
+                            ?>
+                                <option disabled selected>No hay Viviendas Registradas...</option>
+                            <?php
+                            }
+                            ?>
                         </select>
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -78,27 +126,47 @@
 
                     <div class="input-group my-2">
                         <select id="familiaPersona" name="familiaPersona" class="form-select">
-                            <option disabled selected>Seleccione su familia</option>
-                            <option value="1">...</option>
-                            <option value="2">...</option>
+                            <?php
+                            //Consulta Select familias
+                            $query = "SELECT * FROM familia";
+                            $result = $conn->query($query);
+                            $numfilas = $result->num_rows;
+                            if ($numfilas > 0) {
+                            ?>
+                                <option disabled selected>Seleccione su NUIF</option>
+                                <?php
+                                for ($i = 0; $i < $numfilas; $i++) {
+                                    $aux = $result->fetch_object();
+                                ?>
+                                    <option value="<?php echo $aux->idFamilia; ?>"><?php echo $aux->idFamilia; ?></option>
+                                <?php
+                                }
+                                ?>
+                            <?php
+                            } else {
+                            ?>
+                                <option disabled selected>No hay Familias Registradas...</option>
+                            <?php
+                            }
+                            ?>
                         </select>
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                             </svg>
                         </button>
+                        <label class="ms-3 mt-2 me-2 text-black-50" for="familiaPersona">Por favor seleccione el Número Único de Identificación Familiar (NUIF) que le arrojó el sistema a la hora de registrar su familia.</label>
                     </div>
 
-                    <button onclick="crearMunicipio();" class="btn btn-primary" form="formCreate" type="button">Ingresar Datos</button>
+                    <button onclick="crearPersona();" class="btn btn-primary" form="formCreate" type="button">Ingresar Datos</button>
                 </form>
             </div>
 
             <!-- Tabla de Consulta -->
-            <div class="col-8">
+            <div class="col-9">
                 <?php
                 //Conectamos para obtener la lista de personas
-                require "../database.php";
-                $query = "SELECT * FROM municipio";
+                $query = "SELECT * FROM persona";
                 $result = $conn->query($query);
                 $numfilas = $result->num_rows;
                 if ($numfilas > 0) {
@@ -114,10 +182,25 @@
                                     <center>Nombre</center>
                                 </th>
                                 <th scope="col">
-                                    <center>Área (km<sup>2</sup>)</center>
+                                    <center>Apellidos</center>
                                 </th>
                                 <th scope="col">
-                                    <center>Presupuesto (COP)</center>
+                                    <center>Teléfono</center>
+                                </th>
+                                <th scope="col">
+                                    <center>Edad</center>
+                                </th>
+                                <th scope="col">
+                                    <center>Sexo</center>
+                                </th>
+                                <th scope="col">
+                                    <center>Municipio</center>
+                                </th>
+                                <th scope="col">
+                                    <center>Vivienda</center>
+                                </th>
+                                <th scope="col">
+                                    <center>NUIF</center>
                                 </th>
                                 <th scope="col">
                                     <center>Modificar</center>
@@ -133,14 +216,39 @@
                                 $aux = $result->fetch_object();
                             ?>
                                 <tr>
-                                    <form id="formMunicipio<?php echo $aux->idMunicipio; ?>" method="POST">
-                                        <input type="hidden" name="idMunicipio" value="<?php echo $aux->idMunicipio; ?>">
+                                    <form id="formPersona<?php echo $aux->idPersona; ?>" method="POST">
+                                        <input type="hidden" name="idPersona" value="<?php echo $aux->idPersona; ?>">
                                         <th class="align-middle" scope="row"><?php echo $i + 1; ?></th>
-                                        <td class="align-middle"><input name="nombreMunicipio" id="nombreMunicipio" class="form-control" form="formMunicipio<?php echo $aux->idMunicipio; ?>" type="text" value="<?php echo $aux->nombreMunicipio; ?>"></td>
-                                        <td class="align-middle"><input name="areaMunicipio" id="areaMunicipio" class="form-control" form="formMunicipio<?php echo $aux->idMunicipio; ?>" type="number" value="<?php echo $aux->areaMunicipio; ?>"></td>
-                                        <td class="align-middle"><input name="presupuestoMunicipio" id="presupuestoMunicipio" class="form-control" form="formMunicipio<?php echo $aux->idMunicipio; ?>" type="number" value="<?php echo $aux->presupuestoMunicipio; ?>"></td>
-                                        <td class="align-middle"><button onclick="updateMunicipio(<?php echo $aux->idMunicipio; ?>);" form="formMunicipio<?php echo $aux->idMunicipio; ?>" id="actualizarMunicipio" class="btn btn-outline-warning btn-sm" type="button">Actualizar</button></td>
-                                        <td class="align-middle"><button onclick="deleteMunicipio(<?php echo $aux->idMunicipio; ?>);" id="borrarMunicipio<?php echo $aux->idMunicipio; ?>" form="formMunicipio<?php echo $aux->idMunicipio; ?>" class="btn btn-outline-danger btn-sm" type="button">Borrar</button></td>
+                                        <td class="align-middle"><input name="nombrePersona" id="nombrePersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>" type="text" value="<?php echo $aux->nombrePersona; ?>"></td>
+                                        <td class="align-middle"><input name="apellidoPersona" id="apellidoPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>" type="text" value="<?php echo $aux->apellidoPersona; ?>"></td>
+                                        <td class="align-middle"><input name="telefonoPersona" id="telefonoPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>" type="number" value="<?php echo $aux->telefonoPersona; ?>"></td>
+                                        <td class="align-middle"><input name="edadPersona" id="edadPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>" type="number" value="<?php echo $aux->edadPersona; ?>"></td>
+                                        <td class="align-middle">
+                                            <select name="sexoPersona" id="sexoPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>">
+                                                <option value="">A</option>
+                                                <option value="">B</option>
+                                            </select>
+                                        </td>
+                                        <td class="align-middle">
+                                            <select name="municipioPersona" id="municipioPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>">
+                                                <option value="">A</option>
+                                                <option value="">B</option>
+                                            </select>
+                                        </td>
+                                        <td class="align-middle">
+                                            <select name="viviendaPersona" id="viviendaPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>">
+                                                <option value="">A</option>
+                                                <option value="">B</option>
+                                            </select>
+                                        </td>
+                                        <td class="align-middle">
+                                            <select name="familiaPersona" id="familiaPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>">
+                                                <option value="">A</option>
+                                                <option value="">B</option>
+                                            </select>
+                                        </td>
+                                        <td class="align-middle"><button onclick="updatePersona(<?php echo $aux->idMunicipio; ?>);" form="formPersona<?php echo $aux->idPersona; ?>" id="actualizarMunicipio" class="btn btn-outline-warning btn-sm" type="button">Actualizar</button></td>
+                                        <td class="align-middle"><button onclick="deletePersona(<?php echo $aux->idMunicipio; ?>);" form="formMunicipio<?php echo $aux->idMunicipio; ?>" id="borrarMunicipio<?php echo $aux->idMunicipio; ?>" class="btn btn-outline-danger btn-sm" type="button">Borrar</button></td>
                                     </form>
                                 </tr>
                             <?php
@@ -163,7 +271,7 @@
 </body>
 
 <script>
-    function updateMunicipio(idMunicipio) {
+    function updatePersona(idMunicipio) {
         let nombre = '#formMunicipio' + idMunicipio;
         let datos = $(nombre).serialize();
         $.ajax({
@@ -182,7 +290,7 @@
         });
     }
 
-    function deleteMunicipio(idMunicipio) {
+    function deletePersona(idMunicipio) {
         let nombre = '#formMunicipio' + idMunicipio;
         let datos = $(nombre).serialize();
         $.ajax({
@@ -201,11 +309,11 @@
         });
     }
 
-    function crearMunicipio() {
+    function crearPersona() {
         let datos = $("#formCreate").serialize();
         $.ajax({
             type: "POST",
-            url: "createMunicipio.php",
+            url: "createPersona.php",
             data: datos,
             success: function(r) {
                 if (r == 1) {
