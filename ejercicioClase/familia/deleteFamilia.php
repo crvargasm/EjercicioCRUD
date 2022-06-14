@@ -4,6 +4,8 @@ try {
     $idFamilia = $_POST['idFamilia'] ?? '';
     $result = $conn->query("DELETE FROM cabezaxfamilia 
                                 WHERE (Familia_idFamilia = '$idFamilia');");
+    $result = $conn->query("DELETE FROM posesion 
+                                WHERE (Persona_idPersona IN (SELECT idPersona FROM persona where Familia_idFamilia='$idFamilia'));");
     $result = $conn->query("DELETE FROM persona 
                                 WHERE (Familia_idFamilia = '$idFamilia');");
     $result = $conn->query("DELETE FROM familia 

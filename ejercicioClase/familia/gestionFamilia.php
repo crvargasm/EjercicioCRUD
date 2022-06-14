@@ -58,7 +58,7 @@ require "../database.php";
         let nombre = '#formDelete';
         let datos = $(nombre).serialize();
 
-        if (confirm("A continuación vas a proceder a borrar tanto la familia, como las personas que las conforman (incluyendo la Cabeza de Familia registrada). \n ¿Seguro que deseas continuar?")) {
+        if (confirm("A continuación vas a proceder a borrar tanto la familia, como las personas que las conforman (incluyendo la Cabeza de Familia registrada y las posesiones). \n ¿Seguro que deseas continuar?")) {
             $.ajax({
                 type: "POST",
                 url: "deleteFamilia.php",

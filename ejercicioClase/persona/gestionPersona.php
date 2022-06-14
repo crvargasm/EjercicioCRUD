@@ -390,20 +390,22 @@ require "../database.php";
     function deletePersona(idPersona) {
         let nombre = '#formPersona' + idPersona;
         let datos = $(nombre).serialize();
-        $.ajax({
-            type: "POST",
-            url: "deletePersona.php",
-            data: datos,
-            success: function(r) {
-                if (r == 1) {
-                    alert("Cambios Guardados con exito");
-                    window.location.reload();
-                    return 0;
-                } else if (r == 2) {
-                    alert("Upps ha ocurrido un error al intentar eliminar la persona, intenta de nuevo");
+        if (confirm("A continuación vas a proceder a borrar tanto la Persona, como las posesiones que esta posee (incluyendo si es Cabeza de Familia registrada). \n ¿Seguro que deseas continuar?")) {
+            $.ajax({
+                type: "POST",
+                url: "deletePersona.php",
+                data: datos,
+                success: function(r) {
+                    if (r == 1) {
+                        alert("Cambios Guardados con exito");
+                        window.location.reload();
+                        return 0;
+                    } else if (r == 2) {
+                        alert("Upps ha ocurrido un error al intentar eliminar la persona, intenta de nuevo");
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     function crearPersona() {
