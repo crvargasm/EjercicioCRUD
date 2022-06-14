@@ -22,23 +22,23 @@
     <h5 class="my-5">
         <center>A continuación seleccione la entidad que desea gestionar</center>
     </h5>
-    
+
     <div class="container my-5">
-        <div class="row">
-            <div class="col-auto me-5">
+        <div class="row justify-content-md-center">
+            <div class="col-auto mx-4">
                 <a href="municipio/gestionMunicipios.php"><button class="btn btn-warning">Gestión Municipios</button></a>
             </div>
-            <div class="col-auto me-5">
+            <div class="col-auto mx-4">
                 <a href="persona/gestionPersona.php"><button class="btn btn-warning">Gestión Personas</button></a>
             </div>
-            <div class="col-auto me-5">
-                <button class="btn btn-warning">Gestión Viviendas</button>
+            <div class="col-auto mx-4">
+                <a href="vivienda/gestionVivienda.php"><button class="btn btn-warning">Gestión Viviendas</button></a>
             </div>
-            <div class="col-auto me-5">
-                <button class="btn btn-warning">Gestión Posesiones</button>
+            <div class="col-auto mx-4">
+                <a href="posesion/gestionPosesion.php"><button class="btn btn-warning">Gestión Posesiones</button></a>
             </div>
-            <div class="col-auto me-5">
-                <button class="btn btn-warning">Gestión Familias</button>
+            <div class="col-auto mx-4">
+                <a href="familia/gestionFamilia.php"><button class="btn btn-warning">Gestión Familias</button></a>
             </div>
         </div>
     </div>

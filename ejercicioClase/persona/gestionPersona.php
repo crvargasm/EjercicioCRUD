@@ -60,6 +60,7 @@ require "../database.php";
 
                     <!--Select Municipio-->
                     <div class="input-group my-2">
+                        <label class="ms-3 my-2 me-2 text-black-50" for="municipioPersona">Para registrarse debe pasar por Gestion Municipio y registrar el Municipio para poder visualizar su Municipio.</label>
                         <select id="municipioPersona" name="municipioPersona" class="form-select">
                             <?php
                             //Consulta Select Municipios
@@ -96,6 +97,7 @@ require "../database.php";
 
                     <!--Select Viviendas-->
                     <div class="input-group my-2">
+                        <label class="ms-3 my-2 me-2 text-black-50" for="viviendaPersona">Para registrarse debe pasar por Gestion Viviendas y crear una Nueva Vivienda para poder visualizar su dirección.</label>
                         <select id="viviendaPersona" name="viviendaPersona" class="form-select">
                             <?php
                             //Consulta Select Viviendas
@@ -132,6 +134,7 @@ require "../database.php";
 
                     <!--Select Familia NUIF-->
                     <div class="input-group my-2">
+                        <label class="ms-3 my-2 me-2 text-black-50" for="familiaPersona">Para registrarse debe pasar por Gestion Familias y crear una Nueva Familia para obtener su Número Único de Identificación Familiar (NUIF).</label>
                         <select id="familiaPersona" name="familiaPersona" class="form-select">
                             <?php
                             //Consulta Select familias
@@ -164,10 +167,10 @@ require "../database.php";
                                 </svg>
                             </button>
                         </a>
-                        <label class="ms-3 mt-2 me-2 text-black-50" for="familiaPersona">Por favor seleccione el Número Único de Identificación Familiar (NUIF) que le arrojó el sistema a la hora de registrar su familia.</label>
+                        <label class="ms-3 my-2 me-2 text-black-50" for="familiaPersona">Por favor seleccione el Número Único de Identificación Familiar (NUIF) que le arrojó el sistema a la hora de registrar su familia.</label>
                     </div>
 
-                    <button onclick="crearPersona();" class="btn btn-primary" form="formCreate" type="button">Ingresar Datos</button>
+                    <button onclick="crearPersona();" class="mb-4 btn btn-primary" form="formCreate" type="button">Ingresar Datos</button>
                 </form>
             </div>
 

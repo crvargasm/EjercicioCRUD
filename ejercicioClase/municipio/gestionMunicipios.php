@@ -42,9 +42,10 @@
                         <div class="input-group-text"><strong>$</strong></div>
                         <input id="presupuestoMunicipio" name="presupuestoMunicipio" class="form-control" type="number" placeholder="Ingrese Presupuesto del Municipio">
                     </div>
-                    <button onclick="crearMunicipio();" class="btn btn-primary" form="formCreate" type="button">Ingresar Datos</button>
+                    <button onclick="crearMunicipio();" class="mb-4 btn btn-primary" form="formCreate" type="button">Ingresar Datos</button>
                 </form>
             </div>
+
             <div class="col-8">
                 <?php
                 //Conectamos para obtener la lista de personas
