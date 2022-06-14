@@ -345,7 +345,7 @@ require "../database.php";
                                             </select>
                                         </td>
                                         <td class="align-middle"><button onclick="updatePersona(<?php echo $aux->idPersona; ?>);" form="formPersona<?php echo $aux->idPersona; ?>" id="actualizarPersona" class="btn btn-outline-warning btn-sm" type="button">Actualizar</button></td>
-                                        <td class="align-middle"><button onclick="deletePersona(<?php echo $aux->idPersona; ?>);" form="formMunicipio<?php echo $aux->idPersona; ?>" id="borrarPersona<?php echo $aux->idPersona; ?>" class="btn btn-outline-danger btn-sm" type="button">Borrar</button></td>
+                                        <td class="align-middle"><button onclick="deletePersona(<?php echo $aux->idPersona; ?>);" form="formPersona<?php echo $aux->idPersona; ?>" id="borrarPersona<?php echo $aux->idPersona; ?>" class="btn btn-outline-danger btn-sm" type="button">Borrar</button></td>
                                     </form>
                                 </tr>
                             <?php
@@ -418,7 +418,7 @@ require "../database.php";
                     window.location.reload();
                     return 0;
                 } else if (r == 2) {
-                    alert("Upps ha ocurrido un error al intentar crear el municipio, intenta de nuevo");
+                    alert("Upps ha ocurrido un error al intentar registrar la Persona, intenta de nuevo");
                 }
             }
         });
