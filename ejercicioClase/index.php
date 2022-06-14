@@ -43,7 +43,7 @@
                 <a href="familia/gestionFamilia.php"><button class="btn btn-warning">Gestión Familias</button></a>
             </div>
             <div class="col-auto mx-5">
-                <a href="cabezasxfamilia/gestionCabezaxFamilia.php"><button class="btn btn-warning">Gestión Cabeza de Familia</button></a>
+                <a href="cabezasxfamilia/gestionCabezasxFamilia.php"><button class="btn btn-warning">Gestión Cabeza de Familia</button></a>
             </div>
         </div>
     </div>
