@@ -53,11 +53,12 @@ require "../database.php";
                         <input id="edadPersona" name="edadPersona" class="form-control me-1" type="number" placeholder="Ingrese edad">
                         <select id="sexoPersona" name="sexoPersona" class="form-select">
                             <option disabled selected>Seleccione...</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
                         </select>
                     </div>
 
+                    <!--Select Municipio-->
                     <div class="input-group my-2">
                         <select id="municipioPersona" name="municipioPersona" class="form-select">
                             <?php
@@ -84,13 +85,16 @@ require "../database.php";
                             }
                             ?>
                         </select>
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                            </svg>
-                        </button>
+                        <a href="../municipio/gestionMunicipios.php">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </a>
                     </div>
 
+                    <!--Select Viviendas-->
                     <div class="input-group my-2">
                         <select id="viviendaPersona" name="viviendaPersona" class="form-select">
                             <?php
@@ -100,7 +104,7 @@ require "../database.php";
                             $numfilas = $result->num_rows;
                             if ($numfilas > 0) {
                             ?>
-                                <option disabled selected>Seleccione el Municipio</option>
+                                <option disabled selected>Seleccione la direccion registrada</option>
                                 <?php
                                 for ($i = 0; $i < $numfilas; $i++) {
                                     $aux = $result->fetch_object();
@@ -117,13 +121,16 @@ require "../database.php";
                             }
                             ?>
                         </select>
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                            </svg>
-                        </button>
+                        <a href="../vivienda/getionVivienda.php">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </a>
                     </div>
 
+                    <!--Select Familia NUIF-->
                     <div class="input-group my-2">
                         <select id="familiaPersona" name="familiaPersona" class="form-select">
                             <?php
@@ -150,11 +157,13 @@ require "../database.php";
                             }
                             ?>
                         </select>
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                            </svg>
-                        </button>
+                        <a href="../familia/gestionFamilia.php">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </a>
                         <label class="ms-3 mt-2 me-2 text-black-50" for="familiaPersona">Por favor seleccione el Número Único de Identificación Familiar (NUIF) que le arrojó el sistema a la hora de registrar su familia.</label>
                     </div>
 
@@ -225,30 +234,115 @@ require "../database.php";
                                         <td class="align-middle"><input name="edadPersona" id="edadPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>" type="number" value="<?php echo $aux->edadPersona; ?>"></td>
                                         <td class="align-middle">
                                             <select name="sexoPersona" id="sexoPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>">
-                                                <option value="">A</option>
-                                                <option value="">B</option>
+                                                <option selected value="<?php echo $aux->sexoPersona; ?>">
+                                                    <?php if ($aux->sexoPersona === "M") {
+                                                        echo "Masculino";
+                                                    } elseif ($aux->sexoPersona === "F") {
+                                                        echo "Femenino";
+                                                    }; ?>
+                                                </option>
+                                                <option value="M">Masculino</option>
+                                                <option value="F">Femenino</option>
                                             </select>
                                         </td>
                                         <td class="align-middle">
-                                            <select name="municipioPersona" id="municipioPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>">
-                                                <option value="">A</option>
-                                                <option value="">B</option>
+                                            <select id="municipioPersona" name="municipioPersona" class="form-select" form="formPersona<?php echo $aux->idPersona; ?>">
+                                                <?php
+                                                //subQuery  
+                                                $subQ = "SELECT * FROM municipio WHERE idMunicipio = '$aux->Municipio_idMunicipio';";
+                                                $subR = $conn->query($subQ);
+                                                $subA = $subR->fetch_object();
+
+                                                //Consulta Select Municipios
+                                                $query = "SELECT * FROM municipio";
+                                                $result2 = $conn->query($query);
+                                                $numfilas2 = $result2->num_rows;
+                                                if ($numfilas2 > 0) {
+                                                ?>
+                                                    <option selected value="<?php echo $subA->idMunicipio; ?>"><?php echo $subA->nombreMunicipio; ?></option>
+                                                    <?php
+                                                    for ($j = 0; $j < $numfilas2; $j++) {
+                                                        $aux2 = $result2->fetch_object();
+                                                    ?>
+                                                        <option value="<?php echo $aux2->idMunicipio; ?>"><?php echo $aux2->nombreMunicipio; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <option disabled selected>No hay Municipios Registrados...</option>
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                         </td>
                                         <td class="align-middle">
-                                            <select name="viviendaPersona" id="viviendaPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>">
-                                                <option value="">A</option>
-                                                <option value="">B</option>
+                                            <select id="viviendaPersona" name="viviendaPersona" class="form-select" form="formPersona<?php echo $aux->idPersona; ?>">
+                                                <?php
+                                                //subQuery  
+                                                $subQ = "SELECT * FROM vivienda WHERE idVivienda = '$aux->Habita_idVivienda';";
+                                                $subR = $conn->query($subQ);
+                                                $subA = $subR->fetch_object();
+
+                                                //Consulta Select Viviendas
+                                                $query = "SELECT * FROM vivienda";
+                                                $result2 = $conn->query($query);
+                                                $numfilas2 = $result2->num_rows;
+                                                if ($numfilas2 > 0) {
+                                                ?>
+                                                    <option selected value="<?php echo $subA->idVivienda; ?>"><?php echo $subA->direccionVivienda; ?></option>
+                                                    <?php
+                                                    for ($j = 0; $j < $numfilas2; $j++) {
+                                                        $aux2 = $result2->fetch_object();
+                                                    ?>
+                                                        <option value="<?php echo $aux2->idVivienda; ?>"><?php echo $aux2->direccionVivienda; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <option disabled selected>No hay Viviendas Registradas...</option>
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                         </td>
                                         <td class="align-middle">
                                             <select name="familiaPersona" id="familiaPersona" class="form-control" form="formPersona<?php echo $aux->idPersona; ?>">
-                                                <option value="">A</option>
-                                                <option value="">B</option>
+                                                <?php
+                                                //subQuery  
+                                                $subQ = "SELECT * FROM familia WHERE idFamilia = '$aux->Familia_idFamilia';";
+                                                $subR = $conn->query($subQ);
+                                                $subA = $subR->fetch_object();
+
+                                                //Consulta Select familias
+                                                $query = "SELECT * FROM familia";
+                                                $result2 = $conn->query($query);
+                                                $numfilas2 = $result2->num_rows;
+                                                if ($numfilas2 > 0) {
+                                                ?>
+                                                    <option selected value="<?php echo $subA->idFamilia; ?>"><?php echo $subA->idFamilia; ?></option>
+                                                    <?php
+                                                    for ($j = 0; $j < $numfilas2; $j++) {
+                                                        $aux2 = $result2->fetch_object();
+                                                    ?>
+                                                        <option value="<?php echo $aux2->idFamilia; ?>"><?php echo $aux2->idFamilia; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <option disabled selected>No hay Familias Registradas...</option>
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                         </td>
-                                        <td class="align-middle"><button onclick="updatePersona(<?php echo $aux->idMunicipio; ?>);" form="formPersona<?php echo $aux->idPersona; ?>" id="actualizarMunicipio" class="btn btn-outline-warning btn-sm" type="button">Actualizar</button></td>
-                                        <td class="align-middle"><button onclick="deletePersona(<?php echo $aux->idMunicipio; ?>);" form="formMunicipio<?php echo $aux->idMunicipio; ?>" id="borrarMunicipio<?php echo $aux->idMunicipio; ?>" class="btn btn-outline-danger btn-sm" type="button">Borrar</button></td>
+                                        <td class="align-middle"><button onclick="updatePersona(<?php echo $aux->idPersona; ?>);" form="formPersona<?php echo $aux->idPersona; ?>" id="actualizarPersona" class="btn btn-outline-warning btn-sm" type="button">Actualizar</button></td>
+                                        <td class="align-middle"><button onclick="deletePersona(<?php echo $aux->idPersona; ?>);" form="formMunicipio<?php echo $aux->idPersona; ?>" id="borrarPersona<?php echo $aux->idPersona; ?>" class="btn btn-outline-danger btn-sm" type="button">Borrar</button></td>
                                     </form>
                                 </tr>
                             <?php
@@ -271,12 +365,12 @@ require "../database.php";
 </body>
 
 <script>
-    function updatePersona(idMunicipio) {
-        let nombre = '#formMunicipio' + idMunicipio;
+    function updatePersona(idPersona) {
+        let nombre = '#formPersona' + idPersona;
         let datos = $(nombre).serialize();
         $.ajax({
             type: "POST",
-            url: "updateMunicipio.php",
+            url: "updatePersona.php",
             data: datos,
             success: function(r) {
                 if (r == 1) {
@@ -284,18 +378,18 @@ require "../database.php";
                     window.location.reload();
                     return 0;
                 } else if (r == 2) {
-                    alert("Upps ha ocurrido un error al intentar actualizar el municipio, intenta de nuevo");
+                    alert("Upps ha ocurrido un error al intentar actualizar los datos de la persona, intenta de nuevo");
                 }
             }
         });
     }
 
-    function deletePersona(idMunicipio) {
-        let nombre = '#formMunicipio' + idMunicipio;
+    function deletePersona(idPersona) {
+        let nombre = '#formPersona' + idPersona;
         let datos = $(nombre).serialize();
         $.ajax({
             type: "POST",
-            url: "deleteMunicipio.php",
+            url: "deletePersona.php",
             data: datos,
             success: function(r) {
                 if (r == 1) {
@@ -303,7 +397,7 @@ require "../database.php";
                     window.location.reload();
                     return 0;
                 } else if (r == 2) {
-                    alert("Upps ha ocurrido un error al intentar eliminar el municipio, intenta de nuevo");
+                    alert("Upps ha ocurrido un error al intentar eliminar la persona, intenta de nuevo");
                 }
             }
         });
